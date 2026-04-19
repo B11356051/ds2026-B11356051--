@@ -2,7 +2,7 @@
 
 這週我在安裝 WSL 時遇到 Docker 指令無法執行的問題，後來在 Docker Desktop 設定裡啟用 WSL 整合就解決了。
 
-Supabase 專案 URL: https://supabase.com/dashboard/project/xxxxxx
+Supabase 專案 URL: https://tezdowxmgmrhtlzivegq.supabase.co
 
 ### Week 03 任務完成清單
 - [x] WSL 2 環境運作正常
