@@ -1,1 +1,66 @@
+1. 為何需要 AI Agent
+工具 vs Agent：工具只執行指令，Agent 能理解目標、感知環境、自主決策。
+突破自動補全：Copilot = 局部補全；Agent = 全局理解 + 自主推進。
+三大核心能力：感知 (Perceive)、推理 (Reason)、行動 (Act)。
+自動化進化階梯：腳本 → CI/CD → AI 輔助 → 對話式 AI → 全自主 Agent。
+任務分派矩陣：低風險交給 Agent，高風險需 Human-in-the-loop。
+治理必要性：Agent 能力強大，必須設立邊界與規範。
+
+2. Agent Anatomy Blueprint
+核心組件：LLM (大腦)、Tool Use (雙手)、Context Window (記憶)、System Prompt (治理)。
+LLM 能力與限制：理解語言、推理邏輯，但可能幻覺、知識截止、注意力衰減。
+記憶機制：上下文窗口有限，長對話需壓縮，容易遺忘。
+決策模式：ReAct (推理+行動)、Plan-and-Execute、Tool Chaining。
+Token 經濟學：精確指令、一次性提供完整需求，避免浪費。
+破除迷思：Agent 沒有意志，只是統計模型輸出；不是真正理解商業邏輯。
+
+3. Agent Engineering Blueprint
+三大開發方法論：
+SDD (規格驅動) → 定義方向。
+BDD (行為驅動) → 對齊語境。
+TDD (測試驅動) → 確保品質。
+工作流分級：Lite (簡單修改)、Standard (中等重構)、Full (複雜整合)。
+四問題評估法：決定 Agent 介入深度。
+防禦性開發：避免跳過規格、過度約束、忽略邊界條件。
+裝配線流程：Specify → Clarify → Plan → Implement。
+
+4. MCP Agent Tactical Guide
+Tool Use 機制：目標解析 → 戰術思考 → 工具呼叫 → 觀察回饋 → 重新評估。
+內建工具：File/Search、Edit/Build、System/Web。
+MCP 協議：標準化接口，讓 Agent 無縫接入外部服務。
+四大 MCP 伺服器：
+Context7 → 文件與最佳實踐。
+Sequential → 多步驟深度分析。
+Magic → UI 元件生成。
+Playwright → 瀏覽器自動化與測試。
+協同反應：多伺服器組合 → API 開發、效能最佳化、安全審計。
+限制與對策：大檔案分段讀取、命令超時、需認證頁面、Edit 定位錯誤。
+
+5. Agent Governance Blueprint
+治理者心態：從「提示詞使用者」轉型為「系統治理者」。
+六步治理引擎：
+Constitution (核心原則)
+Firewall (紅線規則 + HITL)
+Memory Architecture (決策日記 + 專案脈絡)
+Orchestrator (CLAUDE.md 啟動治理)
+QA Pipeline (品質檢查)
+Stress Test (壓力測試與迭代)
+治理不是牢籠：是把不可預測的算力轉化為確定性的工程動能。
+持續演化：定期回顧、更新憲法、整合新模式。
+
+6. Claude Code 高效開發指南
+思維轉型：從被動問答 → 主動營運。
+四階段工作流：
+Phase 01 無所不在：跨裝置 Teleport、語音 /voice。
+Phase 02 多工思維：Session 管理、分支 /branch、快閃 /btw。
+Phase 03 全自動化：背景排程 /loop、CI 修復、Session Hooks。
+Phase 04 極限擴展：Git Worktrees + /batch，大規模平行展開。
+專家 CLI 配備：--bare (極速啟動)、--add-dir (跨資料夾)、--agent (專屬角色)。
+終極工作流：靈感擷取 → 視覺驗證 → 大規模重構 → 離線自動化。
+------------------------------------------------------
+Agent 本質：感知、推理、行動的循環引擎。
+工程方法：SDD + BDD + TDD → 結構化工作流。
+工具擴展：MCP 協議讓 Agent 接入外部世界。
+治理框架：憲法、紅線、記憶、品質管線 → 保證安全與可靠。
+開發模式：Claude Code 提供跨裝置、多工、自動化、平行擴展的完整工作流。
 
