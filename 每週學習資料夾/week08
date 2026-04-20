@@ -1,1 +1,63 @@
+1. 企業級 RAG 工程白皮書
+落地三要素：可觀測 (Observability)、可評估 (Evaluability)、可治理 (Governance)。
+資料工程：Chunking 策略（固定長度、語意感知、結構化）、Metadata 標記、Overlap 防斷裂。
+向量引擎選型：
+FAISS → 原型快速檢索
+Qdrant → 生產環境高效能
+pgvector → SQL 整合 + RLS 權限
+組裝引擎：LlamaIndex RouterQueryEngine、SubQuestionQueryEngine，支援多問題拆解。
+Agentic RAG：多回合自我反思 (Self-Reflection)，限制迭代次數避免無限消耗。
+評估框架：Ragas 四指標 → Faithfulness、Relevancy、Precision、Recall。
+治理與安全：OWASP/NIST AI RMF，防 Prompt Injection 與 Retrieval Poisoning。
+成本結構：Token 成本長期主導，需快取與水平擴展。
+落地路線圖：12 週分階段 → Ingestion → MCP Server → 評估 → Agentic Loop → 安全治理。
+
+2. 中醫診斷 RAG 系統
+挑戰：症狀非線性，需綜合推理與矛盾消解，不能只靠向量相似度。
+系統邊界：
+必須 → 症狀到證型候選、辨證論治證據整理、支持/反證依據。
+禁止 → 自動醫療決策、直接斷言病名或處方。
+三大原則：
+以「證型」為核心。
+先結構化，再向量化。
+混合檢索不可偏廢。
+資料分層：教材層 → 結構化百科 → 經典文獻 → 醫案案例。
+Ontology：知識本體，支持/反證/衝突邏輯。
+檢索管線：混合檢索 (Vector + FTS + Graph + Citation)，再 Rerank。
+生成策略：兩階段 → Stage 1 候選證型列表 → Stage 2 證據化論述。
+安全治理：禁止單一症狀下定論，必須揭露不確定性。
+
+3. 八字解盤 RAG 系統
+挑戰：命理邏輯高維符號，不等於自然語言問答。
+通用 RAG vs 八字 RAG：
+Chunking → Token 切割 vs Knowledge Atom。
+運算 → 機率模型 vs 確定性排盤 + 規則引擎。
+檢索 → 單一向量 vs 四路混合 (Symbolic + Metadata + Vector + Graph)。
+生成 → 自由補完 vs 強制溯源、逐字引用、揭露不確定性。
+五層管線：
+Deterministic Engine → 精確排盤 JSON。
+Rule Engine → 格局候選、調候需求。
+Knowledge Ontology → 原子化命題。
+Hybrid Retrieval → 四路檢索 + Score Fusion。
+Grounded Generation → 引用古文、標示不確定性。
+權威分層：核心典籍優先，現代資料僅輔助。
+評估框架：四層 → 排盤正確性、規則正確性、檢索品質、生成品質。
+儲存策略：PostgreSQL 單庫整合 pgvector + JSONB + GIN。
+
+4. Agent Skill 完全攻略
+技能分類：
+基礎技能：檔案讀寫、搜尋、編輯。
+進階技能：系統指令、瀏覽器操作、API 呼叫。
+專業技能：結合 MCP Server，支援 UI 測試、架構分析、安全審計。
+技能使用原則：
+工具描述 (description) 是治理核心信號，決定模型何時使用技能。
+工具數量需控管 (5–7 個)，避免過度複雜。
+權限分離 → 讀寫分開，降低風險。
+技能進化路線：從單一工具 → MCP 標準化 → 多伺服器協同 → 全端功能交付。
+最佳實踐：信任 Agent 自主選擇工具，按需掛載，釋放平行算力。
+---------------------------------------------------------------
+企業級 RAG：重視治理、評估、成本，才能真正上線。
+中醫 RAG：Ontology + Hybrid Retrieval，保留不確定性，輔助診斷而非取代醫師。
+八字 RAG：確定性計算 + 文獻溯源，避免幻覺，強調可驗證性。
+Agent Skill：技能是 Agent 的「外掛」，MCP 協議讓它能安全、標準化地擴展能力。
 
