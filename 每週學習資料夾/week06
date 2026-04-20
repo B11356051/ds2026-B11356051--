@@ -1,1 +1,54 @@
+1. HTTP 與 API 基礎（HTTP Boba Shop + API Dialogue Simplified）
+HTTP 結構：
+Request = Request Line + Headers + Body
+Response = Status Line + Headers + Body
+常見 Headers：Authorization、Cookie/Set-Cookie、Accept-Language、Content-Type、Cache-Control。
+狀態碼分類：
+2xx 成功 → 200 OK, 201 Created, 204 No Content
+3xx 重新導向 → 301, 302, 304
+4xx 客戶端錯誤 → 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, 429 Too Many Requests
+5xx 伺服器錯誤 → 500 Internal Server Error, 503 Service Unavailable
+HTTP Methods：
+GET → 讀取 (安全、可快取)
+POST → 新增 (非冪等)
+PUT → 整份替換 (冪等)
+PATCH → 局部更新 (冪等)
+DELETE → 移除 (常用軟刪除)
+設計原則：狀態碼要誠實（不要用 200 包裝失敗），避免洩漏 DB 錯誤堆疊。
 
+2. AI SEO（AI SEO Quest）
+新舊差異：傳統 SEO 追求曝光，AI SEO 追求「被理解與引用」。
+四層模型：Crawl → Parse → Understand → Generate。
+核心技術：
+JSON-LD (Schema.org) → 結構化資料，轉換為知識圖譜。
+Chunking → 以 H1~H6 層級切分，讓 AI 容易理解。
+Answer-ready Block → 清晰定義句、表格、條列式，方便 AI 抽取。
+排名公式：關鍵字堆疊已過時，取代為「內容品質 + 結構化 + 可引用性」。
+最佳實踐：FAQ、How-To、清晰摘要、每段一概念。
+禁忌：Keyword Stuffing、長文無結構、只做 JSON-LD 沒有內容。
+
+3. 爬蟲與自動化（Playwright Automation Factory Blueprint）
+Playwright 架構：Playwright → Browser → Context → Page。
+定位策略：
+優先用 get_by_role()、get_by_text() → 最穩定。
+get_by_label()、get_by_placeholder() → 表單。
+最後手段：CSS Selector → 脆弱。
+Auto-waiting 三閘門：Visible、Stable、Enabled → 消除 time.sleep()。
+反爬蟲對策：Stealth JS、真實 User-Agent、合理延遲、Session 重用。
+測試與除錯：pytest-playwright、Trace Viewer。
+Supabase 整合：
+租賃任務 (Lease-based Queue) → 避免重複爬取。
+Partition + Retention → 控制大表。
+Storage → 搬移大資料 (raw_html)。
+擴展路線：單工 Worker → 非同步 BrowserPool → 高併發工業級引擎。
+
+4. RAG 與 AI 檢索生成（AI SEO Quest + Playwright）
+流程：Crawl → Chunk → Embedding → Retrieval → Generate。
+檢索策略：向量檢索 (pgvector/HNSW) + 關鍵字混合檢索。
+挑戰：幻覺 → Reranker + 知識圖譜驗證；冷啟動 → Glossary；專有名詞 → Domain-specific Dictionary。
+評估框架：RAGAS、TruLens → 忠實度、相關性、完整度。
+---------------------------------------------------------
+HTTP/API：理解 Request/Response 結構與正確使用狀態碼。
+AI SEO：讓內容結構化、可引用，才能被 AI 檢索與重組。
+Playwright：現代化爬蟲必備，結合 Supabase 打造分散式架構。
+RAG：Chunking + Embedding + Hybrid Search + Reranker → 建立可靠的檢索生成系統。
