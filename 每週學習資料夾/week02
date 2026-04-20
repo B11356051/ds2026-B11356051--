@@ -1,1 +1,67 @@
+1. 機器學習與通用資料集
+Kaggle Datasets：最大社群平台，涵蓋金融、醫療、電商等真實世界資料。
+UCI ML Repository：經典學術資料庫，格式嚴謹，適合教學與演算法驗證。
+OpenML：強調可重現性，能直接透過 Python 調用。
+Google Dataset Search：全球資料集搜尋工具，涵蓋大學、政府、研究機構。
 
+2. LLM 與生成式 AI 資料來源
+Hugging Face Hub：LLM 資料集標準入口，包含指令微調 (Dolly, ShareGPT)、多語言語料 (Common Crawl, Wikipedia)。
+Papers with Code：連結最新 AI 論文與資料集，追蹤 SOTA 模型。
+LMSYS Chatbot Arena：收錄真實用戶與 LLM 對話，研究偏好與對齊。
+
+3. 語音與音訊資料
+Common Voice (Mozilla)：最大開源語音庫，含繁體中文。
+Librispeech：ASR 基準測試集。
+AudioSet (Google)：200 萬段 YouTube 標註音訊，涵蓋 632 類音效。
+VoxCeleb：說話者辨識專用資料集。
+
+4. 科學與特殊主題資料
+NASA Open Data Portal：太空與地球科學資料。
+PhysioNet：生醫訊號與臨床數據。
+AWS Registry of Open Data：基因組學、氣候模型、衛星資料。
+
+5. 全球即時 API 平台
+Unified.to：整合數百 SaaS 的統一 API。
+Financial Modeling Prep (FMP)：股市、經濟指標、財報 API。
+Aviationstack：全球航班即時狀態。
+OpenWeatherMap：分鐘級降水與氣象雷達。
+
+6. 台灣本土 IoT 與政府資料
+民生公共物聯網 (CIoT)：空氣品質、水資源、電力即時數據。
+台北市政府開放資料：YouBike、公車動態。
+交通部 TDX：全台交通載具即時與靜態資料。
+
+7. 全球 IoT 與安全資料
+CIC Datasets：IoT 攻擊與安全防護模型。
+Google Dataset (IoT)：智慧家庭設備日誌。
+AWS Registry：地理空間與氣候模型。
+
+8. 股市與金融資料
+台灣市場：TWSE/TPEX OpenAPI、FinMind、元大/永豐券商 API。
+全球市場：FMP、Twelve Data (WebSocket 即時)、Alpha Vantage。
+總體經濟：FRED (GDP/CPI)、Quandl (航運/大宗商品)、Yahoo Finance (yfinance)。
+
+9. 開發者與程式生態資料
+GitHub Archive (GHArchive)：記錄所有 GitHub 事件。
+Stack Exchange Data Explorer：SQL 查詢 Stack Overflow 問答。
+GHTorrent：深層 GitHub 鏡像數據。
+
+10. 商業與法律資料
+台灣公司登記 API：統編、登記狀態、資本額。
+OpenCorporates：全球 2 億家公司背景。
+司法院法學資料檢索系統：裁判書開放資料。
+
+11. 暗數據與社群資料
+Reddit Data (Pushshift.io)：技術與生活社群歷史討論。
+Discord Bot 抓取：建立私有知識庫，保留真實人類語氣。
+
+12. 空間與地理資料
+OpenStreetMap / Overpass Turbo：地理資料庫，可篩選木材行、五金行。
+Sentinel Hub：歐洲航天局衛星影像。
+
+13. 區塊鏈資料
+Dune Analytics：SQL 查詢鏈上數據，分析支付趨勢與協議採納率。
+-----------------------------------------------------------------
+big5，utf8，utf8mb4 是常見的字元編碼
+BOM 亂碼
+uid，ulid 是唯一識別碼
