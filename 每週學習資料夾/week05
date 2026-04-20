@@ -1,1 +1,61 @@
+1. 關聯式資料庫設計
+試算表痛點：更新異常、插入異常、刪除異常 → 缺乏「唯一真相來源」。
+正規化 (Normalization)：
+1NF：每格一值，消除重複群組。
+2NF：消除部分相依，欄位必須完全依賴主鍵。
+3NF：消除遞移相依，只靠主鍵。
+ER 模型：名詞→表、形容詞→欄位、動詞→關係。
+關係類型：1:1（分離敏感資料）、1:N（外鍵放在「多」的一邊）、M:N（需中間表）。
+反正規化 (Denormalization)：快照、JSONB、計數器快取 → 效能優化但需一致性維護。
+主鍵選擇：ULID 優於 BIGINT/UUID，兼具排序與分散式安全。
+型別防禦：金額用 NUMERIC，不用 FLOAT；時間用 TIMESTAMPTZ；字串用 TEXT。
+
+2. 電商資料庫設計 (Supabase 實戰)
+設計心法：邏輯下放到資料庫層，減少應用程式負擔。
+主鍵策略：統一使用 ULID (TEXT)，避免 BIGINT 撞號與 UUID 效能差。
+Bridge Table 模式：解耦 auth.users 與業務表。
+刪除策略：核心表用 deleted_at (Soft Delete)，避免歷史紀錄消失。
+欄位 vs JSONB：常查詢/排序的欄位用 Column，非結構化資料用 JSONB。
+商品變體：SKU 用 parent_id 自引用架構。
+分類系統：Polymorphic Join 處理多種業務實體分類。
+庫存管理：stocks 表 (當前狀態) + movements 表 (歷史紀錄)。
+交易快照：訂單明細需保存購買當下的商品名稱與價格。
+Ledger 模式：只存交易紀錄，不存餘額，避免資料不一致。
+安全防護：三層結界 → RLS、Policy、GRANT。
+自動化：Triggers、moddatetime、Realtime (僅必要時)。
+設計黃金法則：ULID 全域主鍵、Soft Delete、庫存快照、Ledger 模式、RLS 三層防護。
+
+3. 爬蟲資料庫設計
+常見違規：Bigserial 主鍵、缺少索引、RLS 未開啟、大型 TEXT 欄位未分區。
+主鍵選擇：ULID (TEXT) → 防碰撞、時間排序、PK/FK 統一。
+必備欄位：updated_at Trigger (moddatetime)、project_id (多租戶)。
+索引策略：
+FK Index → 防止 DELETE 全表掃描。
+Partial Index → 特定子集查詢。
+Composite Index → WHERE + ORDER BY 常見模式。
+RLS 防護：所有 Public 表必須啟用 RLS，並落實最小權限 Policy。
+常見危機：raw_html 爆滿、crawl_queue 無限增長、TOAST 拖垮查詢。
+解法：Partition 分區表、Retention Policy 定期清理、Supabase Storage 搬移大資料。
+生產級架構清單：ULID + project_id、updated_at Trigger、RLS + Policy + GRANT、索引配置完整。
+
+4. RAG 系統設計（Retrieval-Augmented Generation）
+核心流程：
+Ingestion：文件上傳 → Chunking → Embedding → 存入向量資料庫。
+Retrieval：向量檢索 (pgvector/HNSW) + 全文檢索 → 排序結果。
+Generation：LLM 根據檢索結果生成答案。
+Chunking 策略：固定長度、語義切分、Markdown 標記切分。
+Embedding 模型：BGE-M3、OpenAI text-embedding-3。
+向量資料庫：pgvector、Milvus。
+檢索策略：Hybrid Search、Parent-Document Retrieval。
+Reranker：提升 Top-K 準確度，避免幻覺。
+評估框架：RAGAS、TruLens → 忠實度、相關性、完整度。
+挑戰：
+幻覺 (Hallucination) → 知識圖譜驗證、Reranker。
+冷啟動 (Cold Start) → 建立專領域詞彙表。
+專有名詞對齊 → 軍事/醫療/法律等專業術語 Glossary。
+----------------------------------------------------------
+資料庫設計：正規化保一致性，反正規化保效能，ULID 是最佳主鍵策略。
+電商架構：快照 + Ledger 保證交易正確性，RLS 三層防護保安全。
+爬蟲架構：分區、Retention、Storage 減輕壓力，索引與 RLS 是必備。
+RAG 系統：Chunking、Embedding、Hybrid Search、Reranker、評估框架 → 打造可解釋且高效的檢索生成系統。
 
